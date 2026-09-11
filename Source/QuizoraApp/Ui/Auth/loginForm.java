@@ -17,6 +17,23 @@ public class loginForm extends javax.swing.JFrame {
      */
     public loginForm() {
         initComponents();
+        passwordField.putClientProperty("FlatLaf.style", "showRevealButton: true");
+        for (java.awt.Component component : passwordField.getComponents()) {
+            if (component instanceof javax.swing.JToggleButton toggle) {
+                toggle.setIcon(new javax.swing.ImageIcon(getClass().getResource(
+                        "/QuizoraApp/Resources/Icons/UIcons/eye_closed.png")));
+                toggle.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource(
+                        "/QuizoraApp/Resources/Icons/UIcons/eye.png")));
+                toggle.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 8));
+                toggle.setToolTipText("Show password");
+                toggle.getAccessibleContext().setAccessibleName("Show password");
+                toggle.addItemListener(event -> {
+                    String action = toggle.isSelected() ? "Hide password" : "Show password";
+                    toggle.setToolTipText(action);
+                    toggle.getAccessibleContext().setAccessibleName(action);
+                });
+            }
+        }
         applySatoshi(getContentPane());
     }
 
@@ -88,7 +105,7 @@ public class loginForm extends javax.swing.JFrame {
         usernameLabel.setFont(new java.awt.Font("Satoshi", 1, 13)); // NOI18N
         usernameLabel.setForeground(new java.awt.Color(37, 50, 56));
         usernameLabel.setLabelFor(usernameField);
-        usernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QuizoraApp/Resources/Icons/UIcons/user.png")));
+        usernameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/QuizoraApp/Resources/Icons/UIcons/user_male.png")));
         usernameLabel.setText("Username or email");
 
         usernameField.setBackground(new java.awt.Color(247, 250, 252));
@@ -219,25 +236,7 @@ public class loginForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new loginForm().setVisible(true));
+        QuizoraApp.quizoraApp.main(args);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
