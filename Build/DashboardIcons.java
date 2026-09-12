@@ -1,0 +1,2 @@
+import java.awt.*;import java.awt.image.*;import java.io.*;import javax.imageio.*;import com.github.weisj.jsvg.parser.*;
+public class DashboardIcons {public static void main(String[]args)throws Exception{String base="Source/QuizoraApp/Resources/Icons/UIcons/";for(String n:new String[]{"home","users","book","clipboard","settings"}){var im=new BufferedImage(21,21,2);var g=im.createGraphics();new SVGLoader().load(new File(base+n+".svg").toURI().toURL()).render((javax.swing.JComponent)null,g);g.dispose();ImageIO.write(im,"png",new File(base+n+".png"));}}}
